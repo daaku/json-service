@@ -32,8 +32,9 @@ def application(environ, start_response):
         'headers': headers,
         'query_params': parse_qs(environ.get('QUERY_STRING')),
         'body': body,
-        'post_params': parse_qs(body),
     }
+    if response['content_type'] == 'application/x-www-form-urlencoded':
+        response['post_params'] = parse_qs(body)
     start_response('200 OK', [('Content-type','application/javascript')])
     return [simplejson.dumps(response, sort_keys=True, indent=4)]
 wsgiref.handlers.CGIHandler().run(application)
