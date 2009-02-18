@@ -3,13 +3,17 @@
 import wsgiref.handlers
 import simplejson
 import cgi
+import logging
 
 def parse_qs(q):
-    p = cgi.parse_qs(q)
-    for each in p:
-        if len(p[each]) == 1:
-            p[each] = p[each][0]
-    return p
+    try:
+        p = cgi.parse_qs(q)
+        for each in p:
+            if len(p[each]) == 1:
+                p[each] = p[each][0]
+        return p
+    except:
+        return {}
 
 def application(environ, start_response):
     headers = {}
