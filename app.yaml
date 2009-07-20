@@ -10,3 +10,5 @@ handlers:
   script: echo.py
 - url: /time
   script: time_app.py
+- url: /sleep
+  script: sleep_app.py

@@ -46,6 +46,12 @@ def application(environ, start_response):
             <h2><a href="/time">/time</a></h2>
             Returns the current unix timestamp.
         </div>
+
+        <div class="service">
+            <h2><a href="/sleep">/sleep</a></h2>
+            Takes a 'seconds' query parameter and returns a simple text
+            response after sleeping for the given number of seconds.
+        </div>
     </body>
 </html>
 """
